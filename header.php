@@ -18,17 +18,31 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
+<div class="page">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'Velocult' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-		</div><!-- .site-branding -->
+	<header class="header" role="banner">
+		<div class="header-background">
+			<?php echo get_template_part('partials/tools'); ?>
+			<div class="site-branding">
+				<?php echo get_template_part('partials/logo'); ?>
+			</div><!-- .site-branding -->
+		</div>
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		<nav class="main-navigation" role="navigation">
+			<?php wp_nav_menu(
+				array(
+					'theme_location' => 'primary',
+					// 'after' => '<img src="'.get_bloginfo('template_url').'/images/dots.svg" />',
+				)
+			); ?>
+			<div class="cart-link">
+				<?php echo get_template_part('partials/cart'); ?>
+				<span class="cart-count">
+					<span class="digit"><?php echo sprintf (_n( '%d', '%d', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?></span>
+				</span>
+			</div>
+		</nav><!-- .main-navigation -->
+	</header><!-- .header -->
 
 	<div id="content" class="site-content">

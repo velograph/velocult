@@ -134,21 +134,6 @@ add_image_size( 'portal-retina', '2400', '1800', 'true' );
 // Remove Woo styling
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
-/**
- * TypeKit Fonts
- */
-function theme_typekit() {
-    wp_enqueue_script( 'theme_typekit', '//use.typekit.net/bpk6lyp.js');
-}
-add_action( 'wp_enqueue_scripts', 'theme_typekit' );
-
-function theme_typekit_inline() {
-  if ( wp_script_is( 'theme_typekit', 'done' ) ) { ?>
-  	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<?php }
-}
-add_action( 'wp_head', 'theme_typekit_inline' );
-
 // Disable reviews on products
 add_filter( 'woocommerce_product_tabs', 'wcs_woo_remove_reviews_tab', 98 );
 function wcs_woo_remove_reviews_tab($tabs) {

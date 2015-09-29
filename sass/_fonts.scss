@@ -1,0 +1,21 @@
+/* Mission Gothic Italic */
+@font-face {
+font-family: 'missionGothic';
+src: url('../fonts/mission_gothic_regular.eot');
+src: url('../fonts/mission_gothic_regular.eot?#iefix') format('embedded-opentype'),
+url('../fonts/mission_gothic_regular.woff') format('woff'),
+url('../fonts/mission_gothic_regular.woff2') format('woff2'),
+url('../fonts/mission_gothic_regular.ttf') format('truetype'),
+url('../fonts/mission_gothic_regular.svg#webfont') format('svg');
+}
+
+/* Mission Gothic Bold */
+@font-face {
+font-family: 'missionGothicBold';
+src: url('../fonts/mission_gothic_bold.eot');
+src: url('../fonts/mission_gothic_bold.eot?#iefix') format('embedded-opentype'),
+url('../fonts/mission_gothic_bold.woff') format('woff'),
+url('../fonts/mission_gothic_bold.woff2') format('woff2'),
+url('../fonts/mission_gothic_bold.ttf') format('truetype'),
+url('../fonts/mission_gothic_bold.svg#webfont') format('svg');
+}

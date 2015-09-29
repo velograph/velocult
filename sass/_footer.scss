@@ -1,0 +1,15 @@
+.footer {
+	text-align: center;
+	font: {
+		family: $mission-gothic-bold;
+		weight: 900;
+	}
+	.site-info {
+		a {
+			color: $black;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
