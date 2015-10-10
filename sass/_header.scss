@@ -35,6 +35,9 @@
 							family: $mission-gothic-bold;
 							size: 36px;
 						}
+						&:hover {
+							color: $grey;
+						}
 					}
 					img {
 						height: 40px;
