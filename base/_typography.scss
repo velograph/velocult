@@ -29,6 +29,10 @@ h2 {
 
 h3 {
   font-size: $h3-font-size;
+  text: {
+      align: center;
+      transform: uppercase;
+  }
 }
 
 h4 {

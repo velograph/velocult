@@ -38,7 +38,7 @@
 			); ?>
 			<div class="cart-link">
 				<?php echo get_template_part('partials/cart'); ?>
-				<span class="cart-count">
+				<span class="digit-container">
 					<span class="digit"><?php echo sprintf (_n( '%d', '%d', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?></span>
 				</span>
 			</div>

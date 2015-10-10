@@ -16,19 +16,38 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'page' ); ?>
+			<div class="section">
+				<h3>Events Calendar</h3>
+				<?php echo do_shortcode('[add_eventon cal_id="1st"]'); ?>
+			</div>
 
 			<?php if( have_rows('taplist') ) : ?>
 
-				<h3><?php the_field('taplist_title'); ?></h3>
-				<?php while ( have_rows('taplist') ) : ?>
+				<div class="taplist section">
 
-			        <?php the_row(); ?>
+					<h3><?php the_field('taplist_title'); ?></h3>
 
-					<?php the_sub_field('brewery'); ?>
-			        <?php the_sub_field('beer'); ?>
+					<?php $i = 1; ?>
+					<?php while ( have_rows('taplist') ) : ?>
 
-			    <?php endwhile; ?>
+				        <?php the_row(); ?>
+
+						<div class="tap">
+							<span class="digit-container">
+								<span class="digit"><?php echo $i; ?></span>
+							</span>
+							<span class="tap-information">
+								<span class="brewery"><?php the_sub_field('brewery'); ?></span>
+								<span class="beer"><?php the_sub_field('beer'); ?></span>
+							</span>
+						</div>
+
+				    <?php
+						$i++;
+						endwhile;
+					?>
+
+				</div>
 
 			<?php endif; ?>
 

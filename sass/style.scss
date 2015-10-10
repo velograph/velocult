@@ -13,12 +13,12 @@
 */
 
 @import "fonts";
+@import "variables";
 @import "bourbon/bourbon";
 @import "base/grid-settings";
 @import "neat/neat";
 @import "base/base";
 
-@import "variables";
 @import "header";
 @import "footer";
 
@@ -32,5 +32,62 @@ body {
 	}
 	.page {
 		@include outer-container;
+	}
+	.section{
+		margin-top: $fifty;
+		h3 {
+			margin-bottom: $fifteen;
+		}
+	}
+	.taplist {
+		@include row();
+		.tap {
+			@include span-columns(4);
+			@include omega(4n);
+			margin-bottom: $ten;
+			.digit-container {
+				@include span-columns(1);
+				@include omega;
+				background: $grey;
+				border-radius: 45px;
+				color: $white;
+				height: 24px;
+				position: relative;
+				text-align: center;
+				top: 2px;
+				width: 24px;
+				vertical-align: text-bottom;
+				font: {
+					family: $mission-gothic-bold;
+					size: 18px;
+				}
+				.digit {
+					position: relative;
+					top: -2px;
+				}
+			}
+			.tap-information {
+				@include span-columns(11);
+				background: $yellow;
+				color: $white;
+				margin-left: $five;
+				padding-left: $ten;
+				text-transform: uppercase;
+				font: {
+					family: $mission-gothic-bold;
+				}
+				.brewery {
+					font: {
+						size: 16px;
+					}
+				}
+				.beer {
+					display: block;
+					font: {
+						size: 24px;
+					}
+				}
+			}
+		}
 	}
 }
