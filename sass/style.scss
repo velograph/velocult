@@ -155,10 +155,17 @@ body {
 		.kit-link-container {
 			@include row();
 			.kit-link-image {
+				background: $black;
 				position: relative;
 				img {
 					display: flex;
 					width: 100%;
+					@include transition(all 0.2s ease-in-out);
+				}
+				&:hover {
+					img {
+						opacity: .4;
+					}
 				}
 			}
 			.kit-image-caption {
@@ -178,11 +185,17 @@ body {
 					family: $mission-gothic-bold;
 					size: 36px;
 				}
+				&:hover {
+					cursor: pointer;
+				}
 			}
 			.kit-order-link {
 				clear: both;
 				padding-right: $twentyfive;
 				text-align: right;
+				:hover {
+					color: $black;
+				}
 			}
 		}
 		.team-cta {

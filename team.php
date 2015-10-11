@@ -87,20 +87,22 @@ get_header(); ?>
 					<?php $tablet = wp_get_attachment_image_src(get_field('banner_image'), 'banner-tablet'); ?>
 					<?php $desktop = wp_get_attachment_image_src(get_field('banner_image'), 'banner-desktop'); ?>
 
-					<picture>
-						<!--[if IE 9]><video style="display: none"><![endif]-->
-						<source
-							srcset="<?php echo $mobile[0]; ?>"
-							media="(max-width: 500px)" />
-						<source
-							srcset="<?php echo $tablet[0]; ?>"
-							media="(max-width: 860px)" />
-						<source
-							srcset="<?php echo $desktop[0]; ?>"
-							media="(min-width: 861px)" />
-						<!--[if IE 9]></video><![endif]-->
-						<img srcset="<?php echo $desktop[0]; ?>">
-					</picture>
+					<a href="<?php the_field('kit_order_url'); ?>" target="_blank">
+						<picture>
+							<!--[if IE 9]><video style="display: none"><![endif]-->
+							<source
+								srcset="<?php echo $mobile[0]; ?>"
+								media="(max-width: 500px)" />
+							<source
+								srcset="<?php echo $tablet[0]; ?>"
+								media="(max-width: 860px)" />
+							<source
+								srcset="<?php echo $desktop[0]; ?>"
+								media="(min-width: 861px)" />
+							<!--[if IE 9]></video><![endif]-->
+							<img srcset="<?php echo $desktop[0]; ?>">
+						</picture>
+					</a>
 
 					<div class="kit-image-caption">
 						<?php the_field('image_caption'); ?>
