@@ -88,9 +88,9 @@ add_action( 'widgets_init', 'velocult_widgets_init' );
 function velocult_scripts() {
 	wp_enqueue_style( 'velocult-style', get_stylesheet_directory_uri() . '/css/style.css', false, filemtime(get_stylesheet_directory() . '/css/style.css') );
 
-	wp_enqueue_script( 'velocult-site-scripts', get_template_directory_uri() . '/js/site-scripts.js', array(), '20130115', true );
-
 	wp_enqueue_script( 'velocult-jQuery', '//code.jquery.com/ui/1.11.4/jquery-ui.js', false, true );
+
+	wp_enqueue_script( 'velocult-site-scripts', get_template_directory_uri() . '/js/site-scripts.js', array(), '20130115', true );
 
 	wp_enqueue_script( 'velocult-pictureFill', get_template_directory_uri() . '/js/pictureFill.js', array(), '20130115', true );
 
@@ -126,10 +126,9 @@ function woocommerce_support() {
     add_theme_support( 'woocommerce' );
 }
 
-add_image_size( 'portal-mobile', '480', '360', 'true' );
-add_image_size( 'portal-tablet', '768', '576', 'true' );
-add_image_size( 'portal-desktop', '1280', '960', 'true' );
-add_image_size( 'portal-retina', '2400', '1800', 'true' );
+add_image_size( 'banner-mobile', '480', '156', 'true' );
+add_image_size( 'banner-tablet', '768', '250', 'true' );
+add_image_size( 'banner-desktop', '1080', '350', 'true' );
 
 // Remove Woo styling
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );

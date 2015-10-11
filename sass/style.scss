@@ -124,4 +124,90 @@ body {
 			}
 		}
 	}
+	.team {
+		text-align: center;
+		.team-banner {
+			@include row();
+			svg {
+				float: left;
+				width: 100%;
+			}
+		}
+		.team-forum-link,
+		.kit-order-link {
+			background: $yellow;
+			a {
+				color: $white;
+				text-transform: uppercase;
+				font: {
+					family: $mission-gothic-bold;
+					size: 36px;
+				}
+			}
+		}
+		.team-info-container {
+			@include row();
+			.team-info {
+				@include span-columns(10);
+				@include shift(1);
+			}
+		}
+		.kit-link-container {
+			@include row();
+			.kit-link-image {
+				position: relative;
+				img {
+					display: flex;
+					width: 100%;
+				}
+			}
+			.kit-image-caption {
+				color: $white;
+				left: $twentyfive;
+				padding-right: $fifty;
+				position: absolute;
+				text-transform: uppercase;
+				top: 50%;
+				@include transform(translateY(-50%));
+				background: {
+					image: url(../images/dots.svg);
+					position: center right;
+					repeat: no-repeat;
+				}
+				font: {
+					family: $mission-gothic-bold;
+					size: 36px;
+				}
+			}
+			.kit-order-link {
+				clear: both;
+				padding-right: $twentyfive;
+				text-align: right;
+			}
+		}
+		.team-cta {
+			.toggle-trigger {
+				svg {
+					max-width: 320px;
+					#svg-text {
+						path {
+							fill: $white;
+							@include transition(all 0.2s ease-in-out);
+						}
+					}
+					&:hover {
+						cursor: pointer;
+						#svg-text {
+							path {
+								fill: $yellow;
+							}
+						}
+					}
+				}
+			}
+			.team-form {
+
+			}
+		}
+	}
 }
