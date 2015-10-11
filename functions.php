@@ -126,6 +126,10 @@ function woocommerce_support() {
     add_theme_support( 'woocommerce' );
 }
 
+add_image_size( 'portal-mobile', '480', '480', 'true' );
+add_image_size( 'portal-tablet', '768', '768', 'true' );
+add_image_size( 'portal-desktop', '1080', '1080', 'true' );
+
 add_image_size( 'banner-mobile', '480', '156', 'true' );
 add_image_size( 'banner-tablet', '768', '250', 'true' );
 add_image_size( 'banner-desktop', '1080', '350', 'true' );
