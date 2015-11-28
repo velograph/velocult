@@ -16,14 +16,19 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'page' ); ?>
-
 			<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+				$post = get_post( $post_id );
+				$slug = $post->post_name;
 			?>
+			<div class="page-content-container <?php echo $slug; ?>">
+
+				<div class="page-content">
+					<!-- <h1 class="page-title"><?php the_title(); ?></h1> -->
+
+					<?php the_content(); ?>
+				</div>
+
+			</div>
 
 		<?php endwhile; // end of the loop. ?>
 

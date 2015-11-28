@@ -12,40 +12,55 @@
 
 get_header(); ?>
 
+<script>
+
+	jQuery(document).ready(function() {
+		// jQuery('.beer').matchHeight();
+	});
+
+</script>
+
 	<div id="primary" class="content-area">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<div class="section">
-				<h3>Events Calendar</h3>
-				<?php echo do_shortcode('[add_eventon cal_id="1st"]'); ?>
+				<div class="events-calendar">
+					<h3>Events Calendar</h3>
+					<?php echo do_shortcode('[add_eventon cal_id="1st"]'); ?>
+				</div>
 			</div>
 
 			<?php if( have_rows('taplist') ) : ?>
 
-				<div class="taplist section">
+				<div class="taplist-container section">
 
 					<h3><?php the_field('taplist_title'); ?></h3>
 
-					<?php $i = 1; ?>
-					<?php while ( have_rows('taplist') ) : ?>
+					<?php
+						$i = 1;
+					 ?>
 
-				        <?php the_row(); ?>
+					<div class="taplist">
+						<?php while ( have_rows('taplist') ) : ?>
 
-						<div class="tap">
-							<span class="digit-container">
-								<span class="digit"><?php echo $i; ?></span>
-							</span>
-							<span class="tap-information">
-								<span class="brewery"><?php the_sub_field('brewery'); ?></span>
-								<span class="beer"><?php the_sub_field('beer'); ?></span>
-							</span>
-						</div>
+					        <?php the_row(); ?>
 
-				    <?php
-						$i++;
-						endwhile;
-					?>
+							<div class="tap">
+								<span class="digit-container">
+									<span class="digit"><?php echo $i; ?></span>
+								</span>
+								<span class="tap-information">
+									<span class="brewery"><?php the_sub_field('brewery'); ?></span>
+									<span class="beer"><?php the_sub_field('beer'); ?></span>
+								</span>
+							</div>
+
+					    <?php
+							$i++;
+							endwhile;
+						?>
+					</div>
 
 				</div>
 
@@ -54,5 +69,11 @@ get_header(); ?>
 		<?php endwhile; // end of the loop. ?>
 
 	</div><!-- #primary -->
+
+	<div class="flickr-feed section">
+
+		<?php echo do_shortcode('[instagram-feed showbutton=false showheader=false showfollow=true followcolor="#fff" followtextcolor="#878888" followtext="Check us out on Instagram" cols="10"]'); ?>
+
+	</div>
 
 <?php get_footer(); ?>

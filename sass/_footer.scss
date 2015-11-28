@@ -1,16 +1,58 @@
-.footer {
+.social-media-links {
+	@include row();
 	margin-top: $fifty;
 	text-align: center;
+	svg {
+		fill: $brown;
+		margin: 0 $fifteen;
+		width: $twentyfive;
+		@include transition(fill .2s ease-in-out);
+		&:hover {
+			fill: $black;
+		}
+	}
+}
+
+.footer {
+	background: $yellow;
+	color: $white;
+	margin-top: $fifty;
+	text-align: center;
+	text-transform: uppercase;
 	font: {
 		family: $mission-gothic-bold;
-		weight: 900;
+		size: $h3-font-size;
+		weight: 400;
+	}
+	@include media( $large-screen ) {
+		font-size: $h4-font-size;
 	}
 	.site-info {
+		span {
+			display: block;
+			@include media( $large-screen ) {
+				display: inline;
+			}
+		}
+		.telephone {
+			padding-left: $fifteen;
+			@include media( $large-screen ) {
+				background: {
+					image: url(../images/dots.svg);
+					position: center left;
+					repeat: no-repeat;
+				}
+			}
+		}
 		a {
-			color: $black;
+			color: $white;
 			&:hover {
-				text-decoration: underline;
+				color: $gray;
 			}
 		}
 	}
+}
+.copyright {
+	padding: $ten 0;
+	text-align: center;
 }

@@ -1,106 +1,256 @@
-.store,
-.single-product-container {
-	margin-top: $fifty;
-}
-
 .store {
 	@include row();
+	margin-top: $fifty;
+	padding: 0 $twenty;
+	@include media( $large-screen ) {
+		padding: 0;
+	}
 	.product-portal {
-		@include span-columns(4);
-		@include omega(3n);
+		margin-bottom: $fifty;
+		@include media( $large-screen ) {
+			@include span-columns(4);
+			@include omega(3n);
+		}
 		.product-image {
 			img {
 				width: 100%;
 			}
 		}
 		.product-info {
+			@include row();
 			background: $yellow;
 			color: $white;
 			padding: $five $fifteen;
+			position: relative;
 			text-transform: uppercase;
-			@include transition(color 0.2s ease-in-out);
+			@include transition(all 0.2s ease-in-out);
 			font: {
 				family: $mission-gothic-bold;
-				size: 24px;
+				size: 18px;
 			}
-			.product-price {
-				float: right;
-				padding-left: $fifteen;
+			@include media( $large-screen ) {
+				font-size: 24px;
+			}
+			.product-title {
+				@include span-columns(9);
 				background: {
 					image: url(../images/dots.svg);
-					position: center left;
-					repeat: no-repeat;
+					position: center right;
+					repeat: repeat-y;
+					size: 5px;
 				}
+			}
+			.product-price {
+				@include span-columns(3);
+				padding-left: $fifteen;
+				position: absolute;
+				right: $fifteen;
+				text-align: right;
+				top: 50%;
+				@include transform(translateY(-50%));
 			}
 		}
 		&:hover {
 			.product-info {
-				color: $black;
+				background: $brown;
 			}
 		}
+	}
+}
+
+.breadcrumbs-container {
+	padding: $twentyfive;
+	@include media( $large-screen ) {
+		padding: $twentyfive 0;
+
+	}
+	a {
+		color: $brown;
+		text-decoration: underline;
 	}
 }
 
 .single-product {
-	.product-section {
-		@include row();
-		.product-image {
+	.single-product-container {
+		.product-section {
+			@include row();
 			@include media( $large-screen ) {
-				@include span-columns(5);
-				@include shift(1);
-				background: $green;
-				img {
-					display: flex;
+				margin-bottom: $hundred;
+			}
+			.product-gallery-container {
+				margin-bottom: $fifty;
+				@include media( $large-screen ) {
+					@include span-columns(6);
+				}
+				.product-gallery {
 				}
 			}
-		}
-		.product-add-to-cart {
-			@include media( $large-screen ) {
-				@include span-columns(5);
-			}
-			.product-title-and-price {
+			.product-image {
 				margin-bottom: $twentyfive;
-				text-align: left;
-				.price {
-					color: $green;
-					// font-size: $h4-font-size;
-					padding-left: $fifteen;
-				}
-			}
-			.cart {
-				.quantity {
-					@include span-columns(2);
-					input {
-						width: 75%;
+				@include media( $large-screen ) {
+					@include span-columns(6);
+					img {
+						display: flex;
 					}
 				}
-				.single_add_to_cart_button {
-					background: $black;
-					border-radius: 0;
-					@include span-columns(4);
-				}
 			}
-			.product-description {
-				@include span-columns(12);
-				margin-top: $twentyfive;
+			.product-add-to-cart {
+				@include span-columns(10);
+				@include shift(1);
+				margin-bottom: $fifty;
+				@include media( $large-screen ) {
+					@include span-columns(5);
+				}
+				.product-title-and-price {
+					margin-bottom: $twentyfive;
+					h3 {
+						text-align: left;
+					}
+					.price {
+						color: $green;
+						font-size: $h2-font-size;
+					}
+				}
+				.cart {
+					.quantity {
+						@include span-columns(3);
+						@include media( $large-screen ) {
+							@include span-columns(2);
+						}
+						input {
+							width: 75%;
+						}
+					}
+					.variations {
+						.label {
+							vertical-align: top;
+						}
+						.value {
+							select {
+								margin-bottom: $five;
+							}
+							a {
+								color: $brown;
+							}
+						}
+					}
+					.single_variation_wrap {
+						@include row();
+						margin-bottom: $fifty;
+						.single_variation {
+							@include span-columns(3);
+							.price {
+								color: $green;
+								font-size: $h3-font-size;
+								@include media( $large-screen ) {
+									font-size: $h2-font-size;
+								}
+							}
+						}
+						.variations_button {
+							@include span-columns(9);
+							.quantity {
+								@include span-columns(3);
+								@include shift(1);
+								input[type="number"] {
+									border-radius: 0;
+									height: 40px;
+									padding: $ten 4px $five 7px;
+								}
+							}
+							.single_add_to_cart_button {
+								@include media( $mobile ) {
+									font-size: 16px;
+								}
+								@include span-columns(8);
+								@include omega;
+							}
+						}
+					}
+					.single_add_to_cart_button {
+						// background: $black;
+						border-radius: 0;
+						text-transform: uppercase;
+						@include span-columns(7);
+						@include media( $large-screen ) {
+							@include span-columns(4);
+						}
+						@include transition(all 0.2s ease-in-out);
+						// &:hover {
+						// 	background: $green;
+						// }
+					}
+				}
+				.product-description {
+					@include span-columns(12);
+					margin-top: $twentyfive;
+				}
 			}
 		}
 	}
-}
-
-.woocommerce-message {
-	background: $green;
-	color: $white;
-	padding: $ten 0;
-	text-align: center;
-	text-transform: uppercase;
-	font: {
-		family: $mission-gothic-bold;
-		size: 24px;
-	}
-	.button {
-		background: transparent;
-		color: $white;
-		text-decoration: underline;
+	.related {
+		h2 {
+			margin-bottom: $ten;
+			text-align: center;
+		}
+		ul.products {
+			@include row();
+			padding: 0 $twenty;
+			.product {
+				margin-bottom: $fifty;
+				position: relative;
+				@include media( $large-screen ) {
+					@include span-columns(4);
+					@include omega(3n);
+				}
+				img {
+					width: 100%;
+				}
+				.product-info {
+					@include row();
+					background: $yellow;
+					color: $white;
+					padding: $five $fifteen;
+					position: relative;
+					text-transform: uppercase;
+					@include transition(all 0.2s ease-in-out);
+					font: {
+						family: $mission-gothic-bold;
+						size: 18px;
+					}
+					@include media( $large-screen ) {
+						font-size: 24px;
+					}
+					h3 {
+						@include span-columns(9);
+						font-size: 24px;
+						text-align: left;
+						background: {
+							image: url(../images/dots.svg);
+							position: center right;
+							repeat: repeat-y;
+							size: 5px;
+						}
+					}
+					.price {
+						@include span-columns(3);
+						padding-left: $fifteen;
+						position: absolute;
+						right: $fifteen;
+						text-align: right;
+						top: 50%;
+						@include transform(translateY(-50%));
+					}
+				}
+				&:hover {
+					.product-info {
+						background: $brown;
+					}
+				}
+				.add_to_cart_button {
+					display: none;
+				}
+			}
+		}
 	}
 }

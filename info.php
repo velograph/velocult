@@ -218,24 +218,29 @@ get_header(); ?>
 
 			</div>
 
-			<div class="brands-list section">
-				<!-- Repeater -->
-				<?php if( have_rows('list_of_brands') ) : ?>
+			<div class="section">
 
-				    <?php while ( have_rows('list_of_brands') ) : ?>
+				<h3>We carry the following brands</h3>
+				<div class="brands-list">
 
-				        <?php the_row(); ?>
+					<?php if( have_rows('list_of_brands') ) : ?>
 
-						<div class="brand">
-							<a href="<?php the_sub_field('brand_link'); ?>" target="_blank">
-						        <img src="<?php echo the_sub_field('logo'); ?>">
-							</a>
-						</div>
+					    <?php while ( have_rows('list_of_brands') ) : ?>
 
-				    <?php endwhile; ?>
+					        <?php the_row(); ?>
 
-				<?php endif; ?>
-			<div>
+							<div class="brand">
+								<a href="<?php the_sub_field('brand_link'); ?>" target="_blank">
+							        <img src="<?php echo the_sub_field('logo'); ?>">
+								</a>
+							</div>
+
+					    <?php endwhile; ?>
+
+					<?php endif; ?>
+
+				</div>
+			</div>
 
 		<?php endwhile; // end of the loop. ?>
 

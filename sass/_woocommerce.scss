@@ -1,0 +1,305 @@
+.woocommerce-page {
+	a {
+		color: $brown;
+		text-decoration: underline;
+	}
+	.col2-set {
+		@include row();
+		.col-1 {
+			margin-bottom: $twentyfive;
+			@include media( $large-screen ) {
+				@include span-columns(6);
+			}
+		}
+		.col-2 {
+			margin-bottom: $fifty;
+			@include media( $large-screen ) {
+				@include span-columns(6);
+				@include omega;
+			}
+		}
+	}
+	#customer_login {
+		padding: $fifty 0;
+		input[type="text"],
+		input[type="email"],
+		input[type="password"] {
+			width: 90%;
+		}
+		.lost_password {
+			font-size: 14px;
+			text-decoration: none;
+		}
+	}
+}
+
+.woocommerce-account {
+	.page-content-container {
+		@include outer-container;
+		.page-content {
+			padding: $twentyfive 0;
+			@include span-columns(10);
+			@include shift(1);
+			@include media( $large-screen ) {
+				@include span-columns(9);
+				@include shift(2);
+			}
+			.myaccount_user,
+			.myaccount_address {
+				margin-bottom: $fifty;
+			}
+		}
+	}
+}
+
+.woocommerce-info {
+	margin-bottom: $fifty;
+	margin-top: $fifty;
+}
+
+.woocommerce-message,
+.woocommerce-info {
+	background: $green;
+	color: $white;
+	padding: $ten $twentyfive;
+	text-align: center;
+	text-transform: uppercase;
+	@include media( $large-screen ) {
+		padding: $ten 0;
+	}
+	font: {
+		family: $mission-gothic;
+		size: 18px;
+	}
+	.button {
+		background: transparent;
+		color: $white;
+		text-decoration: underline;
+		padding: 0;
+	}
+	a {
+		color: $white;
+	}
+}
+
+.woocommerce-cart {
+	.cart-empty {
+		padding: $fifty $twentyfive 0;
+		text-align: center;
+	}
+	.return-to-shop {
+		text-align: center;
+		padding: 0 $twentyfive $fifty;
+		a.wc-backward {
+			border-radius: 0;
+			text-transform: uppercase;
+		}
+	}
+	.content-area {
+		padding-top: 0;
+		.page-content-container {
+			.page-content{
+				@include span-columns(10);
+				@include shift(1);
+				@include media( $large-screen ) {
+					@include span-columns(12);
+					@include shift(0);
+					margin-top: $fifty;
+				}
+				.shop_table {
+					margin-bottom: $fifty;
+					.row {
+						@include row();
+						border-bottom: 1px solid $medium-gray;
+						margin-bottom: 0;
+						padding: $fifteen 0;
+						.section-title {
+							font-weight: 900;
+						}
+						a {
+							color: $brown;
+							font-weight: 400;
+						}
+						.product-remove {
+							@include media( $large-screen ) {
+								@include span-columns(1);
+							}
+							.section-title {
+								display: inline;
+								@include media( $large-screen ) {
+									display: block;
+								}
+							}
+							a {
+								color: $brown;
+								font-size: 24px;
+								vertical-align: sub;
+							}
+						}
+						.product-thumbnail {
+							@include media( $large-screen ) {
+								@include span-columns(2);
+							}
+							img {
+								height: auto;
+								max-width: $hundred;
+							}
+						}
+						.product-name {
+							@include span-columns(6);
+							@include media( $mobile ) {
+								margin-bottom: $fifteen;
+							}
+							@include media( $large-screen ) {
+								@include span-columns(3);
+							}
+						}
+						.product-price {
+							@include span-columns(6);
+							@include omega;
+							@include media( $mobile ) {
+								margin-bottom: $fifteen;
+								text-align: right;
+							}
+							@include media( $large-screen ) {
+								@include span-columns(2);
+							}
+						}
+						.product-quantity {
+							@include span-columns(6);
+							@include media( $large-screen ) {
+								@include span-columns(2);
+							}
+							input[type="number"] {
+								width: 50%;
+							}
+						}
+						.product-subtotal {
+							@include span-columns(6);
+							@include omega;
+							@include media( $mobile ) {
+								text-align: right;
+							}
+							@include media( $large-screen ) {
+								@include span-columns(2);
+							}
+						}
+					}
+				}
+				.bottom-of-cart {
+					.coupons {
+						margin-bottom: $fifty;
+						@include media( $large-screen ) {
+							@include span-columns(6);
+						}
+						.coupon {
+							input[type="submit"] {
+								background: $green;
+								margin-bottom: $twentyfive;
+							}
+						}
+					}
+					.cart-collaterals {
+						@include media( $large-screen ) {
+							@include span-columns(6);
+						}
+						a {
+							color: $brown;
+							text-decoration: underline;
+						}
+						.wc-proceed-to-checkout {
+							margin: $fifty 0 $hundred;
+							a {
+								color: $white;
+								text-decoration: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.page.woocommerce-checkout {
+	.content-area {
+		.page-content-container {
+			.page-content {
+				@include span-columns(12);
+				margin-left: 0;
+				.woocommerce-info {
+					@include row();
+					margin-bottom: $twentyfive;
+				}
+				.checkout_coupon {
+					input[type="text"] {
+						width: 25%;
+					}
+					input[type="submit"] {
+						background: $medium-gray;
+						margin-bottom: $twentyfive;
+					}
+				}
+				.checkout {
+					@include row();
+					margin-bottom: $hundred;
+					h3 {
+						font-size: $h4-font-size;
+						margin-bottom: $twentyfive;
+					}
+					.customer-information {
+						@include span-columns(10);
+						@include shift(1);
+						@include media( $large-screen ) {
+							@include span-columns(6);
+							@include shift(0);
+						}
+						.woocommerce-shipping-fields {
+							label.checkbox {
+								display: inline;
+								vertical-align: middle;
+							}
+						}
+					}
+					.review-order {
+						@include span-columns(10);
+						@include shift(1);
+						@include media( $large-screen ) {
+							@include span-columns(6);
+							@include shift(0);
+							@include omega;
+						}
+						label[for="payment_method_intuit_qbms"] {
+							@include row();
+							img {
+								display: inline-block;
+								width: 14%;
+							}
+						}
+						.payment_methods {
+							li {
+								.shipping-method-label {
+									display: block;
+								}
+								&.payment_method_paypal {
+									img {
+										width: 50%;
+									}
+									.about_paypal {
+										display: block;
+									}
+								}
+							}
+						}
+					}
+				}
+				.terms {
+					margin-top: $ten;
+					label {
+						display: inline;
+					}
+				}
+			}
+		}
+	}
+}

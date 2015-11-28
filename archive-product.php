@@ -36,18 +36,18 @@ get_header(); ?>
 							<!--[if IE 9]></video><![endif]-->
 							<img srcset="<?php echo $desktop[0]; ?>">
 						</picture>
+
+						<div class="product-info">
+							<span class="product-title"><?php the_title(); ?></span>
+							<?php if( $product ) { ?>
+
+								<?php if ( $price_html = $product->get_price_html() ) : ?>
+									<span class="product-price"><?php echo $price_html; ?></span>
+								<?php endif; ?>
+
+							<?php } ?>
+						</div>
 					</a>
-
-					<div class="product-info">
-						<span class="product-title"><?php the_title(); ?></span>
-						<?php if( $product->is_type( 'simple' ) ) { ?>
-
-							<?php if ( $price_html = $product->get_price_html() ) : ?>
-								<span class="product-price"><?php echo $price_html; ?></span>
-							<?php endif; ?>
-
-						<?php } ?>
-					</div>
 
 				</div>
 

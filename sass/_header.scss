@@ -1,60 +1,73 @@
 .header {
+	.my-account {
+		display: none;
+		@include media( $large-screen ) {
+			@include row();
+			text-align: right;
+			a {
+				color: $brown;
+				&:hover {
+					color: $black;
+				}
+			}
+		}
+	}
 	.header-background {
 		position: relative;
+		img {
+			display: block;
+		}
 		.site-branding {
 			left: 50%;
 			position: absolute;
+			text-align: center;
 			top: 50%;
+			width: 25%;
 			@include transform(translate(-50%,-50%));
-			svg {
-				height: 300px;
+			@include media( $large-screen ) {
+				width: 25%;
 			}
 		}
 	}
 	.main-navigation {
-		background: $yellow;
+		a {
+			color: $white;
+			text-decoration: none;
+			text-transform: uppercase;
+			font: {
+				family: $mission-gothic-bold;
+				size: 36px;
+			}
+			&:hover {
+				color: $brown;
+			}
+		}
+	}
+	.mobile-navigation {
 		@include row();
-		.menu-primary-container {
-			@include span-columns(10);
-			.menu {
-				.menu-item {
-					@include span-columns(3);
-					@include omega;
-					margin-bottom: $five;
-					margin-top: $five;
-					text-align: center;
-					background: {
-						image: url(../images/dots.svg);
-						position: center right;
-						repeat: no-repeat;
-					}
-					a {
-						color: $white;
-						text-transform: uppercase;
-						font: {
-							family: $mission-gothic-bold;
-							size: 36px;
-						}
-						&:hover {
-							color: $black;
-						}
-					}
-					img {
-						height: 40px;
-					}
-					&:last-of-type {
-						background-image: none;
-					}
-				}
+		background: $yellow;
+		position: relative;
+		@include media( $large-screen ) {
+			display: none;
+		}
+		.menu-hook {
+			@include span-columns(6);
+			padding: $ten 0 $ten $fifteen;
+			svg {
+				fill: $white;
+				width: $fifty;
 			}
 		}
 		.cart-link {
-			@include span-columns(2);
-			margin-top: $five;
-			padding-right: 2.35765%;
+			@include span-columns(6);
+			padding: $ten $fifteen $ten 0;
 			text-align: right;
-			svg {
-				height: 36px;
+			a {
+				text-decoration: none;
+				svg {
+					fill: $white;
+					width: 35px;
+				}
 			}
 			.digit-container {
 				border: 3px solid $white;
@@ -73,6 +86,86 @@
 				.digit {
 					position: relative;
 					top: -7px;
+				}
+			}
+		}
+		.main-navigation {
+			background: $yellow;
+			text-align: center;
+			ul {
+				clear: both;
+				text-align: center;
+			}
+			.account-link {
+				@include row();
+				font-size: 14px;
+				margin: $fifteen 0;
+			}
+		}
+	}
+	.desktop-navigation {
+		display: none;
+		@include media( $large-screen ) {
+			@include row();
+		}
+		.main-navigation {
+			background: $yellow;
+			@include row();
+			.menu-primary-container {
+				@include span-columns(10);
+				.menu {
+					.menu-item {
+						float: left;
+						width: 25%;
+						padding-top: 2px;
+						text-align: center;
+						background: {
+							image: url(../images/dots.svg);
+							position: center right;
+							repeat: no-repeat;
+							size: 3%;
+						}
+						img {
+							height: 40px;
+						}
+						&:last-of-type {
+							background-image: none;
+						}
+					}
+				}
+			}
+			.cart-link {
+				@include span-columns(2);
+				margin-top: $five;
+				padding-right: 2.35765%;
+				text-align: right;
+				svg {
+					fill: $white;
+					height: 36px;
+				}
+				a:hover {
+					svg {
+						fill: $brown;
+					}
+				}
+				.digit-container {
+					border: 3px solid $white;
+					border-radius: 35px;
+					color: $white;
+					display: inline-block;
+					height: 35px;
+					position: relative;
+					text-align: center;
+					top: -5px;
+					width: 35px;
+					font: {
+						family: $mission-gothic-bold;
+						size: 24px;
+					}
+					.digit {
+						position: relative;
+						top: -4px;
+					}
 				}
 			}
 		}

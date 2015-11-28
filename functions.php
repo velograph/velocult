@@ -96,6 +96,8 @@ function velocult_scripts() {
 
 	wp_enqueue_script( 'velocult-slick', get_template_directory_uri() . '/js/slick.min.js', array(), '20130115', true );
 
+	wp_enqueue_script( 'velocult-matchHeight', get_template_directory_uri() . '/js/matchHeight.min.js', array(), '20130115', true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -130,9 +132,10 @@ add_image_size( 'portal-mobile', '480', '480', 'true' );
 add_image_size( 'portal-tablet', '768', '768', 'true' );
 add_image_size( 'portal-desktop', '1080', '1080', 'true' );
 
-add_image_size( 'banner-mobile', '480', '156', 'true' );
-add_image_size( 'banner-tablet', '768', '250', 'true' );
-add_image_size( 'banner-desktop', '1080', '350', 'true' );
+add_image_size( 'banner-mobile', '480', '350', 'true' );
+add_image_size( 'banner-tablet', '768', '400', 'true' );
+add_image_size( 'banner-desktop', '1280', '458', 'true' );
+add_image_size( 'banner-retina', '2000', '716', 'true' );
 
 // Remove Woo styling
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
@@ -143,3 +146,11 @@ function wcs_woo_remove_reviews_tab($tabs) {
  unset($tabs['reviews']);
  return $tabs;
 }
+
+// Force price to show on variation products
+add_filter('woocommerce_available_variation', function ($value, $object = null, $variation = null) {
+if ($value['price_html'] == '') {
+$value['price_html'] = '<span class="price">' . $variation->get_price_html() . '</span>';
+}
+return $value;
+}, 10, 3);

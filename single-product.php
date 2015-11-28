@@ -28,12 +28,25 @@ get_header(); ?>
 		    jQuery(".accordion").hide('slow');
 		  });
 
+		jQuery('.product-gallery').slick({
+			slidesToShow: 1,
+			mobileFirst: true,
+			slidesToScroll: 1,
+			arrows: false,
+			dots: true,
+		});
+
+		jQuery(".related .product h3").each(function(index) {
+			jQuery(this).next('.related .product .price').andSelf().wrapAll('<div class="product-info"></div>');
+		});
+		// jQuery('.related .product .price').after('</div>');
+
 	});
 	</script>
 
-	<?php get_template_part('partials/breadcrumbs'); ?>
-
 	<?php do_action( 'woocommerce_before_single_product' ); ?>
+
+	<?php get_template_part('partials/breadcrumbs'); ?>
 
 	<section class="single-product-container">
 
@@ -41,37 +54,79 @@ get_header(); ?>
 
 			<section class="product-section product-top">
 
-				<div class="product-image">
+				<?php if( get_field('product_gallery') ) : ?>
 
-					<?php $mobile_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-mobile'); ?>
-					<?php $tablet_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-tablet'); ?>
-					<?php $desktop_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-desktop'); ?>
-					<?php $retina_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-retina'); ?>
+					<div class="product-gallery-container">
 
-					<picture>
-						<!--[if IE 9]><video style="display: none"><![endif]-->
-						<source
-							srcset="<?php echo $mobile_page_banner[0]; ?>"
-							media="(max-width: 500px)" />
-						<source
-							srcset="<?php echo $tablet_page_banner[0]; ?>"
-							media="(max-width: 860px)" />
-						<source
-							srcset="<?php echo $desktop_page_banner[0]; ?>"
-							media="(max-width: 1180px)" />
-						<source
-							srcset="<?php echo $retina_page_banner[0]; ?>"
-							media="(min-width: 1181px)" />
-						<!--[if IE 9]></video><![endif]-->
-						<img srcset="<?php echo $image[0]; ?>">
-					</picture>
+						<div class="product-gallery">
 
-				</div>
+							<?php
+
+							$images = get_field('product_gallery');
+
+							if( $images ): ?>
+								<?php foreach( $images as $image ): ?>
+
+									<picture class="portal-image">
+										<!--[if IE 9]><video style="display: none"><![endif]-->
+										<source
+											srcset="<?php echo $image['sizes']['portal-mobile']; ?>"
+											media="(max-width: 500px)" />
+										<source
+											srcset="<?php echo $image['sizes']['portal-tablet']; ?>"
+											media="(max-width: 860px)" />
+										<source
+											srcset="<?php echo $image['sizes']['portal-desktop']; ?>"
+											media="(max-width: 1180px)" />
+										<source
+											srcset="<?php echo $image['sizes']['portal-retina']; ?>"
+											media="(min-width: 1181px)" />
+										<!--[if IE 9]></video><![endif]-->
+										<img srcset="<?php echo $image['sizes']['portal-desktop']; ?>">
+									</picture>
+
+								<?php endforeach; ?>
+							<?php endif; ?>
+
+						</div>
+
+					</div>
+
+				<?php else: ?>
+
+					<div class="product-image">
+
+						<?php $mobile_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-mobile'); ?>
+						<?php $tablet_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-tablet'); ?>
+						<?php $desktop_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-desktop'); ?>
+						<?php $retina_page_banner = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'portal-retina'); ?>
+
+						<picture>
+							<!--[if IE 9]><video style="display: none"><![endif]-->
+							<source
+								srcset="<?php echo $mobile_page_banner[0]; ?>"
+								media="(max-width: 500px)" />
+							<source
+								srcset="<?php echo $tablet_page_banner[0]; ?>"
+								media="(max-width: 860px)" />
+							<source
+								srcset="<?php echo $desktop_page_banner[0]; ?>"
+								media="(max-width: 1180px)" />
+							<source
+								srcset="<?php echo $retina_page_banner[0]; ?>"
+								media="(min-width: 1181px)" />
+							<!--[if IE 9]></video><![endif]-->
+							<img srcset="<?php echo $image[0]; ?>">
+						</picture>
+
+					</div>
+
+				<?php endif; ?>
 
 				<div class="product-add-to-cart">
 
-					<h3 class="product-title-and-price">
-						<?php the_title(); ?>
+					<div class="product-title-and-price">
+						<h3><?php the_title(); ?></h3>
 						<?php if( $product->is_type( 'simple' ) ) { ?>
 
 							<?php if ( $price_html = $product->get_price_html() ) : ?>
@@ -79,28 +134,35 @@ get_header(); ?>
 							<?php endif; ?>
 
 						<?php } ?>
-					</h3>
+					</div>
 
+					<?php if( has_term('custom-bikes', 'product_cat') || has_term('custom-goods', 'product_cat') ) : ?>
 
+						<p>For more info</p>
+						<a href="mailto:info@velocult.com" class="button">Email Us</a>
 
-					<?php
-						/**
-						* woocommerce_single_product_summary hook
-						*
-						* @hooked woocommerce_template_single_title - 5
-						* @hooked woocommerce_template_single_rating - 10
-						* @hooked woocommerce_template_single_price - 10
-						* @hooked woocommerce_template_single_excerpt - 20
-						* @hooked woocommerce_template_single_add_to_cart - 30
-						* @hooked woocommerce_template_single_meta - 40
-						* @hooked woocommerce_template_single_sharing - 50
-						*/
-						remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-						remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-						remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-						remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-						do_action( 'woocommerce_single_product_summary' );
-					?>
+					<?php else: ?>
+
+						<?php
+							/**
+							* woocommerce_single_product_summary hook
+							*
+							* @hooked woocommerce_template_single_title - 5
+							* @hooked woocommerce_template_single_rating - 10
+							* @hooked woocommerce_template_single_price - 10
+							* @hooked woocommerce_template_single_excerpt - 20
+							* @hooked woocommerce_template_single_add_to_cart - 30
+							* @hooked woocommerce_template_single_meta - 40
+							* @hooked woocommerce_template_single_sharing - 50
+							*/
+							remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+							remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+							remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+							remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+							do_action( 'woocommerce_single_product_summary' );
+						?>
+
+					<?php endif; ?>
 					<div class="product-description">
 						<?php the_excerpt(); ?>
 					</div>
@@ -108,14 +170,13 @@ get_header(); ?>
 
 			</section>
 
-			<!-- <section class="product-section related-products">
-				<h4>Related Products</h4>
+			<section class="product-section related-products">
 				<?php
 					remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 					remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 					do_action( 'woocommerce_after_single_product_summary' );
 				?>
-			</section> -->
+			</section>
 
 		<?php endwhile; // end of the loop. ?>
 

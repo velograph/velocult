@@ -49,18 +49,16 @@ h6 {
 }
 
 p {
+  color: $brown;
   margin: 0 0 ($base-spacing / 2);
   font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.75;
 }
 
 a {
-  @include transition(color 0.1s linear);
-  color: $base-link-color;
+  @include transition(color 0.2s ease-in-out);
   text-decoration: none;
-
-  &:hover {
-    color: $hover-link-color;
-  }
 
   &:active, &:focus {
     color: $hover-link-color;

@@ -21,6 +21,8 @@
 
 @import "header";
 @import "store";
+@import "slick";
+@import "woocommerce";
 @import "footer";
 
 body {
@@ -31,51 +33,98 @@ body {
 		position: absolute;
 		text-indent: -9999px;
 	}
+	button,
+	.button {
+	    background: $brown;
+	    border-radius: 0;
+	    color: white;
+		font-family: $mission-gothic;
+	    font-size: $base-font-size;
+	    line-height: 1;
+	    padding: 0.75em 1em;
+	    text-decoration: none;
+		text-transform: uppercase;
+		@include transition(all 0.2s ease-in-out);
+		&:hover {
+			background: $black;
+		}
+	}
 	.page {
 		@include outer-container;
 	}
 	.section{
+		@include row();
 		margin-top: $fifty;
 		h3 {
 			margin-bottom: $fifteen;
 		}
 	}
-	.taplist {
+	.events-calendar {
+		@include span-columns(10);
+		@include shift(1);
+		@include media( $large-screen ) {
+			@include span-columns(12);
+			@include shift(0);
+		}
+	}
+	.taplist-container {
+		@include outer-container;
 		@include row();
 		.tap {
-			@include span-columns(4);
-			@include omega(4n);
+			@include span-columns(12);
+			padding: 0 $twenty;
+			@include media( $large-screen ) {
+				@include span-columns(8);
+				@include shift(2);
+				// @include omega(3n);
+				padding: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
 			margin-bottom: $ten;
 			.digit-container {
-				@include span-columns(1);
-				@include omega;
-				background: $grey;
-				border-radius: 45px;
+				@include span-columns(2);
+				background: $gray;
+				border-radius: 35px;
 				color: $white;
-				height: 24px;
+				height: 35px;
 				position: relative;
 				text-align: center;
 				top: 2px;
-				width: 24px;
 				vertical-align: text-bottom;
-				font: {
-					family: $mission-gothic-bold;
-					size: 18px;
+				width: 35px;
+				@include media( $large-screen ) {
+					@include span-columns(1);
+					@include omega;
+					border-radius: 45px;
+					height: 24px;
+					width: 24px;
 				}
 				.digit {
+					line-height: 0;
 					position: relative;
-					top: -2px;
+					top: 7px;
+					font: {
+						family: $mission-gothic-bold;
+						size: 18px;
+					}
+					@include media( $large-screen ) {
+						top: 1px;
+					}
 				}
 			}
 			.tap-information {
-				@include span-columns(11);
 				background: $yellow;
 				color: $white;
-				margin-left: $five;
-				padding-left: $ten;
+				font-family: $mission-gothic-bold;
+				padding: $five $five $five $fifteen;
 				text-transform: uppercase;
-				font: {
-					family: $mission-gothic-bold;
+				@include span-columns(10);
+				@include omega;
+				@include media( $large-screen ) {
+					@include span-columns(11);
+					margin-left: $five;
 				}
 				.brewery {
 					font: {
@@ -105,23 +154,36 @@ body {
 			@include shift(1);
 			color: $yellow;
 			a {
-				color: $yellow;
+				color: $brown;
 				&:hover {
-					color: $grey;
+					color: $gray;
 				}
 			}
 		}
 		.acf-map {
-			width: 100%;
+			width: 90%;
 			height: 400px;
 			border: #ccc solid 1px;
-			margin: 20px 0;
+			margin: 20px auto;
+			@include media( $large-screen ) {
+				margin: 20px 0;
+				width: 100%;
+			}
 		}
 		.brands-list {
+			@include outer-container;
+			h3 {
+				padding: 0 $twenty;
+				@include media( $large-screen ) {
+					padding: 0;
+				}
+			}
 			.brand {
-				@include span-columns(3);
-				@include omega(4n);
-				padding: $twentyfive;
+				@include media( $large-screen ) {
+					@include span-columns(4);
+					@include omega(3n);
+					padding: $twentyfive;
+				}
 			}
 		}
 	}
@@ -129,21 +191,25 @@ body {
 		text-align: center;
 		.team-banner {
 			@include row();
-			svg {
+			img {
 				float: left;
 				width: 100%;
+			}
+		}
+		.team-forum-link {
+			a {
+				color: $white;
 			}
 		}
 		.team-forum-link,
 		.kit-order-link {
 			background: $yellow;
-			a {
-				color: $white;
-				text-transform: uppercase;
-				font: {
-					family: $mission-gothic-bold;
-					size: 36px;
-				}
+			color: $white;
+			text-transform: uppercase;
+			font-family: $mission-gothic-bold;
+			font-size: 24px;
+			@include media( $large-screen ) {
+				font-size: 36px;
 			}
 		}
 		.team-info-container {
@@ -151,6 +217,7 @@ body {
 			.team-info {
 				@include span-columns(10);
 				@include shift(1);
+				text-align: left;
 			}
 		}
 		.kit-link-container {
@@ -192,17 +259,25 @@ body {
 			}
 			.kit-order-link {
 				clear: both;
-				padding-right: $twentyfive;
-				text-align: right;
+				@include media( $large-screen ) {
+					padding-right: $twentyfive;
+					text-align: right;
+				}
 				:hover {
 					color: $black;
 				}
 			}
 		}
+		.flickr-feed {
+			margin-bottom: $fifty;
+		}
 		.team-cta {
 			.toggle-trigger {
 				svg {
-					max-width: 320px;
+					width: 50%;
+					@include media( $large-screen ) {
+						width: 15%;
+					}
 					#svg-text {
 						path {
 							fill: $white;
@@ -220,8 +295,76 @@ body {
 				}
 			}
 			.team-form {
-
+				.mission-statement {
+					margin: $fifty 0;
+				}
+				.gform_wrapper {
+					margin: 0 auto;
+					max-width: 75%;
+					a {
+						color: $black;
+						text-decoration: underline;
+					}
+					.interests {
+						ul {
+							@include columns(2);
+						}
+					}
+					.terms {
+						text-align: center;
+						.gfield_checkbox {
+							margin: 0 auto !important;
+							max-width: 50%;
+						}
+					}
+					.gform_footer {
+						text-align: center;
+					}
+				}
 			}
 		}
+	}
+}
+
+.slick-dots {
+	clear: both;
+	margin: 0 auto;
+	width: 25%;
+	@include media( $large-screen ) {
+		margin: 0;
+		width: auto;
+	}
+	li {
+		float: left;
+		margin-right: $ten;
+		button {
+			background: $green;
+			border-radius: $fifteen;
+			height: $fifteen;
+			padding: 0;
+			text-indent: -9999px;
+			width: $fifteen;
+		}
+		&.slick-active {
+			button {
+				background: $black;
+			}
+		}
+	}
+}
+
+#bbpress-forums {
+	margin: $fifty 0;
+	a {
+		color: $gray;
+		&:hover {
+			color: $brown;
+		}
+	}
+}
+
+.footer {
+	.copyright {
+		font-weight: 300;
 	}
 }
