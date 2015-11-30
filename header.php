@@ -37,16 +37,6 @@
 
 	<header class="header" role="banner">
 
-		<div class="my-account">
-			<a href="/my-account">
-				<?php if( is_user_logged_in() ) : ?>
-					My Account
-				<?php else : ?>
-					Login
-				<?php endif; ?>
-			</a>
-		</div>
-
 		<div class="header-background">
 
 			<img src="<?php echo get_template_directory_uri(); ?>/images/tools.jpg" />

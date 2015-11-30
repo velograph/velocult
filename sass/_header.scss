@@ -36,7 +36,7 @@
 			text-transform: uppercase;
 			font: {
 				family: $mission-gothic-bold;
-				size: 36px;
+				size: 30px;
 			}
 			&:hover {
 				color: $brown;
@@ -116,8 +116,7 @@
 				.menu {
 					.menu-item {
 						float: left;
-						width: 25%;
-						padding-top: 2px;
+						padding: $five 40px 0;
 						text-align: center;
 						background: {
 							image: url(../images/dots.svg);
@@ -136,7 +135,7 @@
 			}
 			.cart-link {
 				@include span-columns(2);
-				margin-top: $five;
+				margin-top: 7px;
 				padding-right: 2.35765%;
 				text-align: right;
 				svg {

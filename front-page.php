@@ -24,11 +24,10 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<div class="section">
-				<div class="events-calendar">
-					<h3>Events Calendar</h3>
-					<?php echo do_shortcode('[add_eventon cal_id="1st"]'); ?>
-				</div>
+			<div class="flickr-feed section">
+
+				<?php echo do_shortcode('[instagram-feed showbutton=false showheader=false disablemobile="true" showfollow=true followcolor="#fff" followtextcolor="#878888" followtext="Check us out on Instagram"]'); ?>
+
 			</div>
 
 			<?php if( have_rows('taplist') ) : ?>
@@ -66,14 +65,15 @@ get_header(); ?>
 
 			<?php endif; ?>
 
+			<div class="section">
+				<div class="events-calendar">
+					<h3>Events Calendar</h3>
+					<?php echo do_shortcode('[add_eventon cal_id="1st"]'); ?>
+				</div>
+			</div>
+
 		<?php endwhile; // end of the loop. ?>
 
 	</div><!-- #primary -->
-
-	<div class="flickr-feed section">
-
-		<?php echo do_shortcode('[instagram-feed showbutton=false showheader=false showfollow=true followcolor="#fff" followtextcolor="#878888" followtext="Check us out on Instagram" cols="10"]'); ?>
-
-	</div>
 
 <?php get_footer(); ?>

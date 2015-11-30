@@ -268,58 +268,73 @@ body {
 				}
 			}
 		}
-		.flickr-feed {
-			margin-bottom: $fifty;
-		}
 		.team-cta {
-			.toggle-trigger {
-				svg {
-					width: 50%;
-					@include media( $large-screen ) {
-						width: 15%;
+			@include row();
+			position: relative;
+			.toggle-trigger,
+			.forum-portal {
+				@include span-columns(6);
+				@include omega(2);
+				margin-bottom: $fifty;
+				margin-top: $fifty;
+			}
+			.team-dots {
+				display: none;
+				@include media( $large-screen ) {
+					display: block;
+					left: 50%;
+					position: absolute;
+					top: 50%;
+					width: 30px;
+					@include transform(translate(-50%,-50%));
+				}
+			}
+			svg {
+				width: 50%;
+				@include media( $large-screen ) {
+					width: 35%;
+				}
+				#svg-text {
+					path {
+						fill: $white;
+						@include transition(all 0.2s ease-in-out);
 					}
+				}
+				&:hover {
+					cursor: pointer;
 					#svg-text {
 						path {
-							fill: $white;
-							@include transition(all 0.2s ease-in-out);
-						}
-					}
-					&:hover {
-						cursor: pointer;
-						#svg-text {
-							path {
-								fill: $yellow;
-							}
+							fill: $yellow;
 						}
 					}
 				}
 			}
-			.team-form {
-				.mission-statement {
-					margin: $fifty 0;
+		}
+		.team-form {
+			.mission-statement {
+				margin: $fifty 0;
+			}
+			.gform_wrapper {
+				margin: 0 auto;
+				max-width: 75%;
+				a {
+					color: $black;
+					text-decoration: underline;
 				}
-				.gform_wrapper {
-					margin: 0 auto;
-					max-width: 75%;
-					a {
-						color: $black;
-						text-decoration: underline;
+				.interests {
+					ul {
+						@include columns(2);
 					}
-					.interests {
-						ul {
-							@include columns(2);
-						}
+				}
+				.terms {
+					text-align: center;
+					.gfield_checkbox {
+						margin: 0 auto !important;
+						max-width: 50%;
 					}
-					.terms {
-						text-align: center;
-						.gfield_checkbox {
-							margin: 0 auto !important;
-							max-width: 50%;
-						}
-					}
-					.gform_footer {
-						text-align: center;
-					}
+				}
+				.gform_footer {
+					text-align: center;
 				}
 			}
 		}
@@ -348,6 +363,23 @@ body {
 		&.slick-active {
 			button {
 				background: $black;
+			}
+		}
+	}
+}
+
+.flickr-feed {
+	margin-bottom: $fifty;
+	#sb_instagram {
+		#sbi_images {
+			.sbi_item {
+				// width: 50% !important;
+				@include media( $large-screen ) {
+					width: 16.66% !important;
+				}
+				// img {
+				// 	display: grid !important;
+				// }
 			}
 		}
 	}
