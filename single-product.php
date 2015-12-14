@@ -164,7 +164,7 @@ get_header(); ?>
 
 					<?php endif; ?>
 					<div class="product-description">
-						<?php the_excerpt(); ?>
+						<?php the_content(); ?>
 					</div>
 				</div>
 

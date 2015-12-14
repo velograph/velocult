@@ -196,14 +196,20 @@
 		ul.products {
 			@include row();
 			padding: 0 $twenty;
+			.product_cat-custom-bikes {
+				.button {
+					display: none;
+				}
+			}
 			.product {
 				margin-bottom: $fifty;
 				position: relative;
-				@include media( $large-screen ) {
+				@include media( $medium-screen ) {
 					@include span-columns(4);
 					@include omega(3n);
 				}
 				img {
+					height: auto;
 					width: 100%;
 				}
 				.product-info {

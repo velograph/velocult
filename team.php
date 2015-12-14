@@ -74,7 +74,7 @@ get_header(); ?>
 				</div>
 
 				<div class="forum-portal">
-					<a href="/forums" target="_blank">
+					<a href="http://velocult.freeforums.net" target="_blank">
 						<svg viewBox="0 0 244 244">
 						    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
 						        <g id="Shape-+-Shape-+-Group" sketch:type="MSLayerGroup">
